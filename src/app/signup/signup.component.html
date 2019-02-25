@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="jumbotron">
+        <h2 class="text-center">Sign Up</h2>
+          <form (ngSubmit) = "onSubmit()" #f="ngForm">
+            <!-- <div class="form-group">
+              <label for="uname">Username</label>
+              <input type="text" class="form-control" placeholder="Username" id="uname" ngModel name="uname" required #uname="ngModel">
+              <span class="help-block" *ngIf="!uname.valid && uname.touched">Please enter username!</span>
+            </div> -->
+            <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" id="email" ngModel name="email" required email #email="ngModel">
+                    <span class="help-block" *ngIf="!email.valid && email.touched">
+                      <span  *ngIf = "email.errors['required']"> Please enter your email! </span>
+                      <span *ngIf = "!email.errors['vaild'] && !email.errors['required']"> Please enter valid email </span>
+                    </span>
+            </div>      
+            <div class="form-group">
+              <label for="pwd">Password</label>
+              <input type="password" class="form-control" placeholder="Password" id="pwd" ngModel name="password" required #pwd="ngModel">
+              <span class="help-block" *ngIf="!pwd.valid && pwd.touched">Please enter password!</span>
+            </div>
+            <!-- <div class="form-group">
+              <label for="cpwd">Confirm Password</label>
+              <input type="password" class="form-control" placeholder="Confirm Password" id="cpwd" ngModel name="cpwd" required #cpwd="ngModel">
+              <span class="help-block" *ngIf="!cpwd.valid && cpwd.touched">Please enter re-enter password!</span>
+            </div>       -->
+            <input type="submit" class="btn btn-primary btn-block" value="Sign Up" [disabled]="!f.valid">
+            <div class="text-center">
+              Have an account?<a routerLink="/signin" class="btn btn-link">Sign in</a>
+            </div>
+          </form>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="container">
+    <h2 class="text-center">Company Details</h2>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr class="success">
+                    <th>Id</th>
+                    <th>Categories</th>
+                    <th>Company Name</th>
+                    <!-- <th>Image</th> -->
+                    <th>Website</th>
+                    <th>Customer Service</th>
+                    <th>Status</th>
+                    <th>Version</th>
+                    <!-- <th>Claim Email</th>                    -->
+                    <th>Add Date</th>                   
+                    <!-- <th>All Categories</th>                    -->
+                    <th>Edit</th>                   
+                    <th>Delete</th>                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let company of userData">
+                    <td>{{ company._id }}</td>
+                    <td>{{ company.categories }}</td>
+                    <td>{{ company.company_name }}</td>
+                    <!-- <td><img src="{{ company.company_img }}" class="img-rounded"></td> -->
+                    <td>{{ company.company_website }}</td>
+                    <td>{{ company.customer_service }}</td>
+                    <td>{{ company.company_status }}</td>
+                    <td>{{ company.__v }}</td>
+                    <!-- <td>{{ company.claim_email }}</td> -->
+                    <td>{{ company.company_add_date }}</td>
+                    <!-- <td>{{ company.allcategories }}</td> -->
+                    <td><button class="btn btn-primary" data-target="#updateModal" data-toggle="modal" (click)="loadData(company._id)">EDIT</button></td>
+                    <td><button class="btn btn-danger" (click) = "onDelete(company._id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="updateModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="text-center">Update Company Details</h4>
+                </div>
+
+                <div class="modal-body" style="padding:40px 50px;">
+                    <form (ngSubmit)="onEdit(loadUpdateData._id)" #updateCarrier="ngForm">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="companyId">Comapny Id</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <!-- 2  way data binding -->
+                                    <input type="text" class="form-control" name="company_id" disabled placeholder="Company Id" [(ngModel)]="loadUpdateData._id" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="companyName">Company Name</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="company_name" required placeholder="Company Name" [(ngModel)]="loadUpdateData.company_name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="website">Company Website</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="company_website" required placeholder="Company Website" [(ngModel)]="loadUpdateData.company_website">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="version">Version</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="version" required placeholder="Version" [(ngModel)]="loadUpdateData.__v">
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="col col-md-4"></div>
+                        <div class="col-md-4">
+                            <input type="submit" [disabled]="!updateCarrier.valid" class="btn btn-primary"  value="UPDATE" >
+                        </div>          
+                    </form>                                 
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" value="CANCEL" data-dismiss="modal">
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+

@@ -1,0 +1,10 @@
+.container{
+    width: fit-content;
+    margin-top: 3%
+}
+.jumbotron{
+    background-color: black;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
