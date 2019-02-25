@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-user-details',
